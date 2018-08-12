@@ -1,0 +1,21 @@
+{
+  "name": "fractal-tree",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.6",
+    "babel-preset-airbnb": "^2.5.3",
+    "babel-preset-stage-1": "^6.24.1",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}

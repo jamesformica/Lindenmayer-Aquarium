@@ -1,0 +1,112 @@
+{
+  "trees": [
+    {
+      "iterations": 4,
+      "angle": [15, 25],
+      "distance": [6, 12],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FX[FX[+XF]]"
+        },
+        {
+          "from": "X",
+          "to": "FF[+XZ++X-F[+ZX]][-X++F-X]"
+        },
+        {
+          "from": "Z",
+          "to": "[+F-X-F][++ZX]"
+        }
+      ]
+    },
+    {
+      "iterations": 4,
+      "angle": [15, 25],
+      "distance": [6, 12],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FF"
+        },
+        {
+          "from": "X",
+          "to": "F+[-F-XF-X][+FF][--XF[+X]][++F-X]"
+        }
+      ]
+    },
+    {
+      "iterations": 4,
+      "angle": [15, 25],
+      "distance": [6, 12],
+      "axiom": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "FF+[+F-F-F]-[-F+F+F]"
+        }
+      ]
+    },
+    {
+      "iterations": 7,
+      "angle": 25,
+      "distance": [1, 2],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "X",
+          "to": "F[+X][-X]FX"
+        },
+        {
+          "from": "F",
+          "to": "FF"
+        }
+      ]
+    },
+    {
+      "iterations": 5,
+      "angle": [15, 25],
+      "distance": [6, 12],
+      "axiom": "F",
+      "rules": [
+        {
+          "from": "F",
+          "to": "F[+F]F[-F]F"
+        }
+      ]
+    },
+    {
+      "iterations": 5,
+      "angle": [15, 25],
+      "distance": [6, 12],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "X",
+          "to": "F-[[X]+X]+F[+FX]-X"
+        },
+        {
+          "from": "F",
+          "to": "FF"
+        }
+      ]
+    },
+    {
+      "iterations": 7,
+      "angle": 20,
+      "distance": [1, 2],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "X",
+          "to": "F[+X]F[-X]+X"
+        },
+        {
+          "from": "F",
+          "to": "FF"
+        }
+      ]
+    }
+  ]
+}
