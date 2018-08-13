@@ -12,8 +12,8 @@ const paintScene = (canvas, landY) => {
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
   const sand = ctx.createLinearGradient(0, landY, 0, canvas.height)
-  sand.addColorStop(0, 'khaki')
-  sand.addColorStop(1, 'turquoise')
+  sand.addColorStop(0, 'burlywood')
+  sand.addColorStop(1, 'hotpink')
 
   ctx.fillStyle = sand
   ctx.fillRect(0, landY, canvas.width, canvas.height)

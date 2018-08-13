@@ -107,6 +107,38 @@
           "to": "FF"
         }
       ]
+    },
+    {
+      "iterations": 4,
+      "angle": 30,
+      "distance": [4, 6],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "X",
+          "to": "FF[+X][FX-X[+F-F]XF-F]"
+        },
+        {
+          "from": "F",
+          "to": "FXF"
+        }
+      ]
+    },
+    {
+      "iterations": 6,
+      "angle": 30,
+      "distance": [1, 2],
+      "axiom": "X",
+      "rules": [
+        {
+          "from": "X",
+          "to": "F[+F+X][-F-X]FX"
+        },
+        {
+          "from": "F",
+          "to": "FF"
+        }
+      ]
     }
   ]
 }
