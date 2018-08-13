@@ -9,7 +9,7 @@ import trees from './trees.json'
 const CANVAS_ID = 'ft'
 const SPACING = 200
 
-const getX = (index, canvas) => {
+const getX = (index) => {
   const min = index * SPACING
   const max = min + SPACING
   return random(min, max)
@@ -23,9 +23,8 @@ const getAngle = (angle) => {
       return random(angle[0], angle[1])
     }
     return console.error('angle array must have exactly 2 values')
-  } else {
-    return angle
   }
+  return angle
 }
 
 const getDistance = (distance, canvas) => {
@@ -45,28 +44,28 @@ const getDistance = (distance, canvas) => {
   return Math.min(canvas.height * 0.01, dist)
 }
 
-window.onload = () => {
-  const canvas = document.getElementById(CANVAS_ID)
-  canvas.width = document.documentElement.clientWidth
-  canvas.height = document.documentElement.clientHeight
+global.window.onload = () => {
+  const canvas = global.document.getElementById(CANVAS_ID)
+  canvas.width = global.document.documentElement.clientWidth
+  canvas.height = global.document.documentElement.clientHeight
 
   const skyLine = canvas.height * 0.8
 
-  requestAnimationFrame(() => paintScene(canvas, skyLine))
+  global.requestAnimationFrame(() => paintScene(canvas, skyLine))
 
   const loops = Math.floor(canvas.width / SPACING)
 
-  range(0, loops - 1).map((i) => {
+  range(0, loops - 1).forEach((i) => {
     const tree = sample(trees.trees)
 
     const options = {
       y: skyLine,
-      x: getX(i, canvas),
+      x: getX(i),
       distance: getDistance(tree.distance, canvas),
       angle: getAngle(tree.angle),
-      iterations: tree.iterations
+      iterations: tree.iterations,
     }
 
-    requestAnimationFrame(() => new Tree(CANVAS_ID, tree.axiom, tree.rules, options))
+    global.requestAnimationFrame(() => new Tree(CANVAS_ID, tree.axiom, tree.rules, options))
   })
 }

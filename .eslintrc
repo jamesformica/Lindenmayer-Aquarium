@@ -1,6 +1,10 @@
 {
   "parser": "babel-eslint",
+  "extends": "airbnb",
   "rules": {
-    "strict": 0
+    "strict": 0,
+    "semi": [1, "never"],
+    "object-curly-newline": 0,
+    "no-console": ["error", { "allow": ["warn", "error"] }]
   }
 }

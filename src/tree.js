@@ -3,7 +3,7 @@ import sample from 'lodash/sample'
 
 class Tree {
   constructor(canvasId, axiom, rules, options) {
-    this.canvas = document.getElementById(canvasId)
+    this.canvas = global.document.getElementById(canvasId)
     this.context = this.canvas.getContext('2d')
 
     this.setOptions(axiom, rules, options)
@@ -29,14 +29,14 @@ class Tree {
   }
 
   generateSentence() {
-    for (let f = 0; f < this.iterations; f++) {
+    for (let f = 0; f < this.iterations; f += 1) {
       let nextSentence = ''
 
-      for (let i = 0; i < this.sentence.length; i++) {
+      for (let i = 0; i < this.sentence.length; i += 1) {
         const char = this.sentence.charAt(i)
         let found = false
 
-        for (let j = 0; j < this.rules.length; j++) {
+        for (let j = 0; j < this.rules.length; j += 1) {
           if (char === this.rules[j].from) {
             found = true
             nextSentence += this.rules[j].to
@@ -57,48 +57,52 @@ class Tree {
     let x = this.startX
     let y = this.startY
 
-    for (let i = 0; i < this.sentence.length; i++) {
+    for (let i = 0; i < this.sentence.length; i += 1) {
       switch (this.sentence.charAt(i)) {
         case 'F': {
           const oldX = x
           const oldY = y
 
-          x = x + (Math.sin(heading) * this.distance)
-          y = y - (Math.cos(heading) * this.distance)
+          x += (Math.sin(heading) * this.distance)
+          y -= (Math.cos(heading) * this.distance)
 
           this.paintStack.push({ oldX, oldY, x, y })
-          break;
+          break
         }
         case '-': {
           heading -= this.angle * Math.PI / 180
-          break;
+          break
         }
         case '+': {
           heading += this.angle * Math.PI / 180
-          break;
+          break
         }
         case '[': {
           this.stateStack.push({ x, y, heading })
-          break;
+          break
         }
         case ']': {
           ({ x, y, heading } = this.stateStack.pop())
-          break;
+          break
+        }
+        default: {
+          break
         }
       }
     }
   }
 
   paintTree(drawIndex) {
-    requestAnimationFrame(() => {
-      for (let i = 0; i < 4; i++) {
-        this.paintBranch(this.paintStack[drawIndex])
-        drawIndex += 1
+    global.requestAnimationFrame(() => {
+      let newDrawIndex = drawIndex
+      for (let i = 0; i < 4; i += 1) {
+        this.paintBranch(this.paintStack[newDrawIndex])
+        newDrawIndex += 1
 
-        if (drawIndex >= this.paintStack.length) return
+        if (newDrawIndex >= this.paintStack.length) return
       }
 
-      this.paintTree(drawIndex)
+      this.paintTree(newDrawIndex)
     })
   }
 

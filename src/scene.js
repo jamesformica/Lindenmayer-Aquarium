@@ -1,20 +1,20 @@
 const paintScene = (canvas, landY) => {
-  const context = canvas.getContext('2d')
+  const ctx = canvas.getContext('2d')
 
-  context.save()
+  ctx.save()
 
-  context.beginPath()
-  context.fillStyle = "black"
-  context.fillRect(0, 0, canvas.width, canvas.height)
+  ctx.beginPath()
+  ctx.fillStyle = 'black'
+  ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-  context.strokeStyle = 'white'
-  context.lineWidth = 2
-  context.moveTo(0, landY)
-  context.lineTo(canvas.width, landY)
-  context.stroke()
-  context.closePath()
+  ctx.strokeStyle = 'white'
+  ctx.lineWidth = 4
+  ctx.moveTo(0, landY)
+  ctx.lineTo(canvas.width, landY)
+  ctx.stroke()
+  ctx.closePath()
 
-  context.restore()
+  ctx.restore()
 }
 
 export default paintScene
