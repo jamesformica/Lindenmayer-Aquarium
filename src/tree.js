@@ -1,5 +1,4 @@
 import get from 'lodash/get'
-import sample from 'lodash/sample'
 
 class Tree {
   constructor(canvasId, axiom, rules, options) {
@@ -11,11 +10,9 @@ class Tree {
     this.sentence = this.axiom
     this.stateStack = []
     this.paintStack = []
-    this.colour = sample(['white', 'aqua', 'magenta', 'lime'])
 
     this.generateSentence()
     this.buildPaintStack()
-    this.paintTree(0)
   }
 
   setOptions(axiom, rules, options) {
@@ -26,6 +23,7 @@ class Tree {
     this.startY = get(options, 'y', this.canvas.height)
     this.distance = get(options, 'distance', 15)
     this.angle = get(options, 'angle', 20)
+    this.colour = get(options, 'colour', 'white')
   }
 
   generateSentence() {
@@ -92,7 +90,7 @@ class Tree {
     }
   }
 
-  paintTree(drawIndex) {
+  paintTree(drawIndex = 0) {
     global.requestAnimationFrame(() => {
       let newDrawIndex = drawIndex
       for (let i = 0; i < 4; i += 1) {

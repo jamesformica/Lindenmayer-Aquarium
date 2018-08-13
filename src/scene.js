@@ -4,14 +4,19 @@ const paintScene = (canvas, landY) => {
   ctx.save()
 
   ctx.beginPath()
-  ctx.fillStyle = 'black'
+  const water = ctx.createLinearGradient(0, 0, 0, landY)
+  water.addColorStop(0, 'steelblue')
+  water.addColorStop(1, 'midnightblue')
+
+  ctx.fillStyle = water
   ctx.fillRect(0, 0, canvas.width, canvas.height)
 
-  ctx.strokeStyle = 'white'
-  ctx.lineWidth = 4
-  ctx.moveTo(0, landY)
-  ctx.lineTo(canvas.width, landY)
-  ctx.stroke()
+  const sand = ctx.createLinearGradient(0, landY, 0, canvas.height)
+  sand.addColorStop(0, 'khaki')
+  sand.addColorStop(1, 'turquoise')
+
+  ctx.fillStyle = sand
+  ctx.fillRect(0, landY, canvas.width, canvas.height)
   ctx.closePath()
 
   ctx.restore()
