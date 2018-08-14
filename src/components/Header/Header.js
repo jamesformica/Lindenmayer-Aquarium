@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
 import './Header.css'
-import HowItWorks from '../HowItWorks/HowItWorks';
+import HowItWorks from '../HowItWorks/HowItWorks'
 
 class Header extends Component {
   constructor() {
