@@ -2,9 +2,20 @@ import random from 'lodash/random'
 
 const SPACING = 200
 
-export const getLoops = canvas => (Math.floor(canvas.width / SPACING) - 1)
+export const getLoops = (canvas) => {
+  if (canvas.height > canvas.width) {
+    return random(2, 3)
+  }
 
-export const getX = (index) => {
+  return Math.floor(canvas.width / SPACING)
+}
+
+export const getX = (index, canvas) => {
+  if (canvas.height > canvas.width) {
+    const padding = canvas.width * 0.2
+    return random(padding, canvas.width - padding)
+  }
+
   const min = index * SPACING
   const max = min + SPACING
   return random(min, max)

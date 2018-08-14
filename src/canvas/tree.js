@@ -60,11 +60,12 @@ class Tree {
         case 'F': {
           const oldX = x
           const oldY = y
+          const size = Math.max(5 - this.paintStack.length / 2, 1)
 
           x += (Math.sin(heading) * this.distance)
           y -= (Math.cos(heading) * this.distance)
 
-          this.paintStack.push({ oldX, oldY, x, y })
+          this.paintStack.push({ oldX, oldY, x, y, size })
           break
         }
         case '-': {
@@ -107,6 +108,7 @@ class Tree {
   paintBranch(coords) {
     this.context.beginPath()
     this.context.strokeStyle = this.colour
+    this.context.lineWidth = coords.size
     this.context.moveTo(coords.oldX, coords.oldY)
     this.context.lineTo(coords.x, coords.y)
     this.context.stroke()

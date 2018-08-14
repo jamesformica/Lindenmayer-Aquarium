@@ -26,7 +26,7 @@ const paint = () => {
 
     const options = {
       y: skyLine,
-      x: getX(i),
+      x: getX(i, canvas),
       distance: getDistance(tree.distance, canvas),
       angle: getAngle(tree.angle),
       iterations: tree.iterations,
