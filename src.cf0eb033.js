@@ -24632,11 +24632,12 @@ var Tree = function () {
               {
                 var oldX = x;
                 var oldY = y;
+                var size = Math.max(5 - this.paintStack.length / 2, 1);
 
                 x += Math.sin(heading) * this.distance;
                 y -= Math.cos(heading) * this.distance;
 
-                this.paintStack.push({ oldX: oldX, oldY: oldY, x: x, y: y });
+                this.paintStack.push({ oldX: oldX, oldY: oldY, x: x, y: y, size: size });
                 break;
               }
             case '-':
@@ -24703,6 +24704,7 @@ var Tree = function () {
       function paintBranch(coords) {
         this.context.beginPath();
         this.context.strokeStyle = this.colour;
+        this.context.lineWidth = coords.size;
         this.context.moveTo(coords.oldX, coords.oldY);
         this.context.lineTo(coords.x, coords.y);
         this.context.stroke();
@@ -24985,14 +24987,23 @@ var SPACING = 200;
 
 var getLoops = exports.getLoops = function () {
   function getLoops(canvas) {
-    return Math.floor(canvas.width / SPACING) - 1;
+    if (canvas.height > canvas.width) {
+      return (0, _random2['default'])(2, 3);
+    }
+
+    return Math.floor(canvas.width / SPACING);
   }
 
   return getLoops;
 }();
 
 var getX = exports.getX = function () {
-  function getX(index) {
+  function getX(index, canvas) {
+    if (canvas.height > canvas.width) {
+      var padding = canvas.width * 0.2;
+      return (0, _random2['default'])(padding, canvas.width - padding);
+    }
+
     var min = index * SPACING;
     var max = min + SPACING;
     return (0, _random2['default'])(min, max);
@@ -25093,7 +25104,7 @@ var paint = function () {
 
       var options = {
         y: skyLine,
-        x: (0, _helpers.getX)(i),
+        x: (0, _helpers.getX)(i, canvas),
         distance: (0, _helpers.getDistance)(tree.distance, canvas),
         angle: (0, _helpers.getAngle)(tree.angle),
         iterations: tree.iterations,
@@ -30137,7 +30148,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = '' || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + '62662' + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + '63261' + '/');
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
 
