@@ -1,0 +1,11 @@
+.HIW__closebutton {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: black;
+  background: transparent;
+  border: 0;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}

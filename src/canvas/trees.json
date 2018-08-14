@@ -139,6 +139,22 @@
           "to": "FF"
         }
       ]
+    },
+    {
+      "iterations": 4,
+      "angle": 25,
+      "distance": [4, 8],
+      "axiom": "FX",
+      "rules": [
+        {
+          "from": "F",
+          "to": "C0FF-[C1-F+F]+[C2+F-F]"
+        },
+        {
+          "from": "X",
+          "to": "C0FF+[C1+F]+[C3-F]F"
+        }
+      ]
     }
   ]
 }

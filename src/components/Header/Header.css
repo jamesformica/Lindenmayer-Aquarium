@@ -1,0 +1,20 @@
+.Header {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+}
+
+.Header__button {
+  background: none;
+  color: white;
+  border: 0;
+  border-bottom: 1px solid white;
+  padding: 0.25rem 0.125rem;
+  cursor: pointer;
+  font-size: 0.75rem;
+  transition: 0.2s;
+}
+
+.Header__button:hover {
+  transform: scale(1.1);
+}
